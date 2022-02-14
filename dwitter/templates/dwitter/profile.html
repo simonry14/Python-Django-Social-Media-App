@@ -17,7 +17,7 @@
 <div class="column is-one-third">
 
     <div class="block">
-        <a href="#">
+        <a href="{% url 'profile_list'%}">
             <button class="button is-dark is-outlined is-fullwidth">
                 All Profiles
             </button>
@@ -32,7 +32,8 @@
             <ul>
             {% for following in profile.follows.all %}
                 <li>
-                    <a href="#">
+                    <a href="{% url 'profile' following.id %}">
+                    
                         {{ following }}
                     </a>
                 </li>
@@ -49,7 +50,7 @@
             <ul>
             {% for follower in profile.followed_by.all %}
                 <li>
-                    <a href="#">
+                    <a href="{% url 'profile' follower.id  %}">
                         {{ follower }}
                     </a>
                 </li>

@@ -11,3 +11,8 @@ def profile_list(request):
     profiles = Profile.objects.exclude(user = request.user)
     context = {"profiles": profiles}
     return render(request, 'dwitter/profile_list.html', context)
+
+def profile(request, pk):
+    profile = Profile.objects.get(id=pk)
+    context = {"profile":profile}
+    return render(request, "dwitter/profile.html", context)

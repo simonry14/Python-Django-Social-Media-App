@@ -36,5 +36,10 @@ class Dweet(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.body
+        return (
+            f"{self.user} "
+            f"{self.created_at} "
+            f"{self.body[:30]}"
+            
+            )
     

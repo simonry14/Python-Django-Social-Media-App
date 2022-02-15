@@ -10,7 +10,33 @@
     <h1 class="title is-1">
         {{profile.user.username|upper}}'s Dweets
     </h1>
+    
     </div>
+
+    <form method="post">
+        {% csrf_token%}
+   <!-- <div class="buttons has-addons">
+    <button class="button is-success {% if profile in request.user.profile.follows.all%} is-static {% endif%}" 
+    name="follow" value="follow">Follow</button>
+    <button class="button is-danger{% if profile not in request.user.profiles.follows.all%} is-static {% endif%}"
+    name="follow" value="unfollow">Unfollow</button>
+    </div> -->
+
+    <div class="buttons has-addons">
+        {% if profile in request.user.profile.follows.all %}
+        <button class="button is-success is-static" name="follow" value="follow">Follow</button>
+        <button class="button is-danger" name="follow" value="unfollow">Unfollow</button>
+        
+        {% else %}
+        <button class="button is-success " name="follow" value="follow">Follow</button>
+        <button class="button is-danger is-static" name="follow" value="follow">Unfollow</button>
+        
+        {% endif %}
+  
+    </div> 
+</form>
+
+   
 
 </div>
 

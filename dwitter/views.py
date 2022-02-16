@@ -5,7 +5,7 @@ from . models import Profile
 # Create your views here.
 def dashboard(request):
     context = {'page':'Dashboard'}
-    return render(request, "base.html", context)
+    return render(request, "dwitter/dashboard.html", context)
 
 def profile_list(request):
     profiles = Profile.objects.exclude(user = request.user)

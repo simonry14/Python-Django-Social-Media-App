@@ -36,6 +36,32 @@
     </div> 
 </form>
 
+
+
+{% for dweet in profile.user.dweets.all %}
+
+<div class="block">
+    <div class="card">
+      <a href="#">
+        <div class="card-content">
+          <div class="media">
+           
+            <div class="media-content">
+              <p class="title is-4">
+                {{ dweet.body }}
+              </p>
+              <p class="subtitle is-6">
+                {{ dweet.created_at|lower }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+{% endfor %}
+
    
 
 </div>

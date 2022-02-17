@@ -1,10 +1,17 @@
 from multiprocessing import context
 from django.shortcuts import render
-from . models import Profile, Dweet
+from . models import Profile
 from . forms import DweetForm
 
 # Create your views here.
 def dashboard(request):
+    
+    if request.method == "POST":
+        form = DweetForm(request.POST)
+        if form.is_valid():
+            dweet = form.save(commit=False)
+            dweet.user = request.user
+            dweet.save()
     form = DweetForm()
     context = {'form': form}
     return render(request, "dwitter/dashboard.html", context)

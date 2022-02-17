@@ -1,10 +1,12 @@
 from multiprocessing import context
 from django.shortcuts import render
-from . models import Profile
+from . models import Profile, Dweet
+from . forms import DweetForm
 
 # Create your views here.
 def dashboard(request):
-    context = {'page':'Dashboard'}
+    form = DweetForm()
+    context = {'form': form}
     return render(request, "dwitter/dashboard.html", context)
 
 def profile_list(request):

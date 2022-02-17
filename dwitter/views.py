@@ -12,6 +12,7 @@ def dashboard(request):
             dweet = form.save(commit=False)
             dweet.user = request.user
             dweet.save()
+            return redirect("dwitter:dashboard")
     form = DweetForm()
     context = {'form': form}
     return render(request, "dwitter/dashboard.html", context)

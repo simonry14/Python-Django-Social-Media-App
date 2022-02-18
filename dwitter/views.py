@@ -16,7 +16,7 @@ def dashboard(request):
     return render(request, "dwitter/dashboard.html", context)
 
 def profile_list(request):
-    profiles = Profile.objects.exclude(user = request.user)
+    profiles = Profile.objects.exclude(user = request.user)#exclude self profile
     context = {"profiles": profiles}
     return render(request, 'dwitter/profile_list.html', context)
 

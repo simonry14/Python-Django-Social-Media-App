@@ -10,7 +10,7 @@ def dashboard(request):
             dweet = form.save(commit=False)
             dweet.user = request.user
             dweet.save()
-            return redirect("dashboard")
+            return redirect("dashboard")#to ensure no resubmisiion
     followed_dweets = Dweet.objects.filter(user__profile__in=request.user.profile.follows.all()).order_by("-created_at")
     context = {'form': form,"dweets": followed_dweets }
     return render(request, "dwitter/dashboard.html", context)
